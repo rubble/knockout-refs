@@ -5,7 +5,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 (function (factory) {
   if (typeof require === "function" && (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object" && (typeof module === "undefined" ? "undefined" : _typeof(module)) === "object") {
     // CommonJS module
-    factory(require("knockout"));
+    module.exports = factory(require("knockout"));
   } else if (typeof define === "function" && define.amd) {
     // AMD anonymous module
     define(["knockout"], factory);
@@ -41,7 +41,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var component = getComponentForNode(element, allBindings, bindingContext);
         // keep track of components inside observables, this allows the user to
         // subscribe if a component is changing.
-        refs[ref] = refs[ref] ? refs[ref](component) : ko.observable(component);
+        refs[ref] = refs.hasOwnProperty(ref) ? refs[ref](component) : ko.observable(component);
         ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
           return delete refs[ref];
         });
@@ -69,4 +69,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
     after: ['ref']
   };
+
+  return ko.bindingHandlers.ref.refs;
 });
