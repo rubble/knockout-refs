@@ -2,7 +2,7 @@
   "name": "knockout-refs",
   "version": "1.0.0",
   "description": "knockout ref binding inspired by React refs ",
-  "main": "dist/ref.js",
+  "main": "dist/ref.min.js",
   "scripts": {
     "test": "karma start --single-run"
   },
