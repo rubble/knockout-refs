@@ -1,0 +1,7 @@
+<div data-bind="refFn: {ref: 'form', callback: cb}">
+  <!--
+    One cannot put refFn on an element which defines a component binding, since
+    both are controlling descendant bindings.
+  -->
+  <parent data-bind="ref: 'parent'"></parent>
+</div>
