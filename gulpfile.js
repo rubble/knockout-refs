@@ -1,11 +1,12 @@
 const babel = require("gulp-babel"),
   gulp = require("gulp"),
   karma = require("karma"),
+  bump = require("gulp-bump"),
   license = require("gulp-license"),
   rename = require("gulp-rename"),
   uglify = require("gulp-uglify");
 
-gulp.task('build', () => {
+gulp.task('dev', () => {
   return gulp.src('src/ref.js')
     .pipe(babel({
       presets: ["es2015"]
@@ -22,4 +23,16 @@ gulp.task('build', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['build']);
+gulp.task('watch', () => {
+  gulp.watch('./src/*.js', ['dev']);
+});
+
+gulp.task('bump', () => {
+  return gulp.src('./package.json')
+    .pipe(bump({
+      type: 'patch'
+    }))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('build', ['dev', 'bump']);
