@@ -4,6 +4,7 @@ const babel = require("gulp-babel"),
   bump = require("gulp-bump"),
   license = require("gulp-license"),
   rename = require("gulp-rename"),
+  streamify = require("gulp-streamify"),
   uglify = require("gulp-uglify");
 
 gulp.task('dev', () => {
@@ -16,7 +17,7 @@ gulp.task('dev', () => {
     }))
     .pipe(gulp.dest('dist'))
     .pipe(rename("ref.min.js"))
-    .pipe(uglify())
+    .pipe(streamify(uglify()))
     .pipe(license("MIT", {
       organization: "Rubble LTD. All rights reserved.",
     }))
