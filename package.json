@@ -1,6 +1,6 @@
 {
   "name": "knockout-refs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "knockout ref binding inspired by React refs ",
   "main": "dist/ref.min.js",
   "scripts": {
